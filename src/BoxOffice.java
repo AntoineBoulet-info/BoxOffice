@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.*;
 
 
-//abstract class 
+//abstract class
 public abstract class BoxOffice {
         private String listing;
         public abstract void addFilm(String titre,String realisateur,int annee, int nbEntrees);
@@ -25,6 +25,7 @@ public abstract class BoxOffice {
                 while(in.hasNextLine()) {
                     line = in.nextLine();
                     tab = line.split("FILM : |\\tREALISATEUR : |\\tANNEE : |\\tVILLE : |\\tENTREES :");
+                    //place les attributs dans le tableau
                     titre = tab[1];
                     realisateur = tab[2];
                     annee =Integer.parseInt(tab[3]);
