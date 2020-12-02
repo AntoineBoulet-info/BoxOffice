@@ -24,15 +24,17 @@ public abstract class BoxOffice {
 
                 while(in.hasNextLine()) {
                     line = in.nextLine();
-                    tab = line.split("FILM : |\\tREALISATEUR : |\\tANNEE : |\\tVILLE : |\\tENTREES :");
-                    //place les attributs dans le tableau
-                    titre = tab[1];
-                    realisateur = tab[2];
-                    annee =Integer.parseInt(tab[3]);
-                    nbEntrees = Integer.parseInt(tab[5]);
+                    if (line.length() != 0) {
+                        tab = line.split("FILM : |\\tREALISATEUR : |\\tANNEE : |\\tVILLE : |\\tENTREES :");
+                        //place les attributs dans le tableau
+                        titre = tab[1];
+                        realisateur = tab[2];
+                        annee = Integer.parseInt(tab[3]);
+                        nbEntrees = Integer.parseInt(tab[5]);
 
-                    //ajoute les données dans addFilm qui sera appelé dans le Test
-                    addFilm(titre,realisateur,annee,nbEntrees);
+                        //ajoute les données dans addFilm qui sera appelé dans le Test
+                        addFilm(titre, realisateur, annee, nbEntrees);
+                    }
                 }
 
                 in.close();
