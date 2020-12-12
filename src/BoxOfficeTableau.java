@@ -33,14 +33,6 @@ public class BoxOfficeTableau extends BoxOffice {
         super(listing);
     }
 
-    //maxEntrees
-    public String maxEntrees() {
-        String[] tab = new String[3];
-
-
-
-    }
-
 
     public static void main(String[] args) throws IOException {
         if (args.length<1) System.err.println("nom de fichier manquant");
@@ -48,10 +40,30 @@ public class BoxOfficeTableau extends BoxOffice {
         try {
             Scanner in = new Scanner(new File(args[0]));
             String line;
+            String tmp_titre = "";
+            String titre = "";
+            String realisateur;
+            String[] tab;
+            int annee;
+            int nbEntrees;
             while(in.hasNextLine()) {
                 line = in.nextLine();
+                tab = line.split("(\\((.*?)\\))\\tReal.: \\tEntrees:");
+                annee = Integer.parseInt(tab[1]);
+                titre = tab[1];
+                realisateur = tab[2];
+                nbEntrees= Integer.parseInt(tab[3]);
+                for (int i=0;i< args.length;i++) {
+                    if (titre.equals(tmp_titre)) {
+                        tmp_titre = in.next();
+                        nbFilms++;
+                    }
+
+
+                }
                 nbLignes++;
-                nbFilms++;
+
+
             }
 
             in.close();
@@ -67,13 +79,8 @@ public class BoxOfficeTableau extends BoxOffice {
         System.out.println("Nombre de films : " + nbFilms );
         System.out.println("------------");
         System.out.println("Films comptabilisant le plus grand nombre d'entrees :");
-        try {
-            Scanner in=new Scanner(new File(args[0]));
 
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
     }
 }
