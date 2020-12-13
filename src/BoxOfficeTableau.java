@@ -49,6 +49,16 @@ public class BoxOfficeTableau extends BoxOffice {
         return cpt;
     }
 
+    public static int maxEntrees(int tab[]) {
+        int sumEntrees = 0;
+        for (int i=0;i<tab.length;i++) {
+
+        }
+
+
+        return sumEntrees;
+    }
+
 
     public static void main(String[] args) throws IOException {
         if (args.length<1) System.err.println("nom de fichier manquant");
@@ -63,18 +73,23 @@ public class BoxOfficeTableau extends BoxOffice {
             int nbEntrees;
             ArrayList<String> data_titre = new ArrayList<>(); // liste composée des titres de films
             String[] tab;
+            String[] tmp = new String[3];
             while(in.hasNextLine()) {
                 line = in.nextLine();
                 tab = line.split("FILM : |\\tREALISATEUR : |\\tANNEE : |\\tVILLE : |\\tENTREES :"); //regex
                 titre = tab[1];
                 annee = Integer.parseInt(tab[3]);
                 nbEntrees = Integer.parseInt(tab[5]);
+
                 //nbFilms
                 if(!data_titre.contains(titre)) { //si le titre n'est pas dans la liste
                     data_titre.add(titre); //ajoute le titre
                     nbFilms++; // incrémente le nombre de Films de la liste
                 }
                 //liste 3 films le plus vus
+
+
+
 
 
 
@@ -98,7 +113,7 @@ public class BoxOfficeTableau extends BoxOffice {
         System.out.println("Nombre de films : " + nbFilms );
         System.out.println("------------");
         System.out.println("Films comptabilisant le plus grand nombre d'entrees :");
-        System.out.println("("+annee+")" + " " + titre + "        entrees :" + " "+ nbEntrees);
+        //System.out.println("("+annee+")" + " " + titre + "        entrees :" + " "+ nbEntrees);
 
 
 

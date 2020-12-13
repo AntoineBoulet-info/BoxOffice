@@ -10,6 +10,10 @@ public class Film {
         this.annee = annee;
         this.nbEntrees = nbEntrees;
     }
+
+    public Film(Film f) {
+    }
+
     //getters and setters
     public String getTitre() {
         return titre;
