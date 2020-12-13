@@ -35,29 +35,6 @@ public class BoxOfficeTableau extends BoxOffice {
         super(listing);
     }
 
-    //compte le nombre de film
-    public static int compterFilm(String line) {
-        int cpt = 0;
-        try {
-            for (int i=0;i<line.length()-1;i++) // s'arrête sur l'avant derniere case avant la fin de la ligne
-                if (line.charAt(i) !=  line.charAt(i) + 1)
-                    cpt++;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return cpt;
-    }
-
-    public static int maxEntrees(int tab[]) {
-        int sumEntrees = 0;
-        for (int i=0;i<tab.length;i++) {
-
-        }
-
-
-        return sumEntrees;
-    }
 
 
     public static void main(String[] args) throws IOException {
@@ -71,6 +48,7 @@ public class BoxOfficeTableau extends BoxOffice {
             String realisateur;
             int annee;
             int nbEntrees;
+            int sumEntrees;
             ArrayList<String> data_titre = new ArrayList<>(); // liste composée des titres de films
             String[] tab;
             String[] tmp = new String[3];
@@ -86,8 +64,12 @@ public class BoxOfficeTableau extends BoxOffice {
                     data_titre.add(titre); //ajoute le titre
                     nbFilms++; // incrémente le nombre de Films de la liste
                 }
-                //liste 3 films le plus vus
 
+
+                //liste 3 films le plus vus
+                for (int i=0;i<tab.length;i++) {
+
+                }
 
 
 
