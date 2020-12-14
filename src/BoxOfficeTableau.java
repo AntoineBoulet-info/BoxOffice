@@ -35,7 +35,17 @@ public class BoxOfficeTableau extends BoxOffice {
         super(listing);
     }
 
-
+    public static int maxEntrees(String[] tab) {
+        int valeurNbEntrees = Integer.parseInt(tab[5]);
+        int maxEntrees = 0;
+        for(int i=0;i<tab.length;i++){
+            maxEntrees+= Integer.parseInt(tab[5]);
+            if (Integer.parseInt(tab[i+5]) < maxEntrees){
+                maxEntrees = Integer.parseInt(tab[i+5]);
+            }
+        }
+        return maxEntrees;
+    }
 
     public static void main(String[] args) throws IOException {
         if (args.length<1) System.err.println("nom de fichier manquant");
@@ -48,7 +58,7 @@ public class BoxOfficeTableau extends BoxOffice {
             String realisateur;
             int annee;
             int nbEntrees;
-            int sumEntrees;
+            int sumEntrees = 0;
             ArrayList<String> data_titre = new ArrayList<>(); // liste composée des titres de films
             String[] tab;
             String[] tmp = new String[3];
@@ -67,9 +77,6 @@ public class BoxOfficeTableau extends BoxOffice {
 
 
                 //liste 3 films le plus vus
-                for (int i=0;i<tab.length;i++) {
-
-                }
 
 
 
