@@ -28,24 +28,13 @@ public class BoxOfficeTableau extends BoxOffice {
         }
         elements[nbFilms++] = new Film(titre, realisateur, annee, nbEntrees);
 
-
     }
+
     //constructeur
     public BoxOfficeTableau(String listing) {
         super(listing);
     }
 
-    public static int maxEntrees(String[] tab) {
-        int valeurNbEntrees = Integer.parseInt(tab[5]);
-        int maxEntrees = 0;
-        for(int i=0;i<tab.length;i++){
-            maxEntrees+= Integer.parseInt(tab[5]);
-            if (Integer.parseInt(tab[i+5]) < maxEntrees){
-                maxEntrees = Integer.parseInt(tab[i+5]);
-            }
-        }
-        return maxEntrees;
-    }
 
     public static void main(String[] args) throws IOException {
         if (args.length<1) System.err.println("nom de fichier manquant");
@@ -60,38 +49,36 @@ public class BoxOfficeTableau extends BoxOffice {
             int nbEntrees;
             int sumEntrees = 0;
             ArrayList<String> data_titre = new ArrayList<>(); // liste composée des titres de films
+            ArrayList<Integer> data_nbEntrees = new ArrayList<>(); // liste composée des titres de films
             String[] tab;
             String[] tmp = new String[3];
             while(in.hasNextLine()) {
                 line = in.nextLine();
                 tab = line.split("FILM : |\\tREALISATEUR : |\\tANNEE : |\\tVILLE : |\\tENTREES :"); //regex
                 titre = tab[1];
+                realisateur = tab[2];
                 annee = Integer.parseInt(tab[3]);
                 nbEntrees = Integer.parseInt(tab[5]);
 
                 //nbFilms
                 if(!data_titre.contains(titre)) { //si le titre n'est pas dans la liste
-                    data_titre.add(titre); //ajoute le titre
+                    data_titre.add(titre);
+                    //ajoute le titre
                     nbFilms++; // incrémente le nombre de Films de la liste
+                    //data_nbEntrees.add(nbEntrees);
+                    //sumEntrees+=nbEntrees;
+
                 }
-
-
-                //liste 3 films le plus vus
-
-
 
 
 
                 nbLignes++;
-                //System.out.println(data_titre);
-
+                //System.out.println(data_titre); affiche tous les titres distinctement
             }
 
             in.close();
 
         }
-
-
 
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -106,6 +93,6 @@ public class BoxOfficeTableau extends BoxOffice {
 
 
 
-
     }
+
 }
