@@ -13,6 +13,9 @@ public class BoxOfficeTableau extends BoxOffice {
     private static int nbLignes;
 
 
+    public boolean
+
+
     //méthode Film
     public void addFilm(String titre, String realisateur, int annee, int nbEntrees) {
             if (nbFilms == TAILLE_TMP) {
@@ -20,7 +23,7 @@ public class BoxOfficeTableau extends BoxOffice {
                 TAILLE_TMP = TAILLE_TMP * 2;
                 Film[] tab = elements;
                 elements = new Film[TAILLE_TMP];
-                for(int i=0;i< tab.length ;i++) {
+                    for(int i=0;i< tab.length ;i++) {
                     Film film = new Film(titre, realisateur, annee, nbEntrees);
                     elements[i++] = film;
                 }
@@ -65,8 +68,8 @@ public class BoxOfficeTableau extends BoxOffice {
                     data_titre.add(titre);
                     //ajoute le titre
                     nbFilms++; // incrémente le nombre de Films de la liste
-                    //data_nbEntrees.add(nbEntrees);
-                    //sumEntrees+=nbEntrees;
+
+
 
                 }
 
