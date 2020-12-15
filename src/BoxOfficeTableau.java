@@ -3,7 +3,6 @@ import java.io.IOException;
 public class BoxOfficeTableau extends BoxOffice {
 
     public final static int TAILLE_INITIALE= 100;
-    public static int TAILLE_TMP = TAILLE_INITIALE;
     private Film[] elements = new Film[TAILLE_INITIALE];//contient les infos d'un Film
     private static int nbFilms;
     private static int nbLignes;
@@ -21,7 +20,7 @@ public class BoxOfficeTableau extends BoxOffice {
         }
         return false;
     }
-    public void majEntrees(String titre,int nbEntrees,Film[] tab) {
+    public void ChangementNbEntrees(String titre,int nbEntrees,Film[] tab) {
         for (Film f : tab) {
             if (f==null) break;
         }
@@ -34,7 +33,7 @@ public class BoxOfficeTableau extends BoxOffice {
             elements=duplication(elements);
         }
         if(search(titre,annee, elements)){
-            majEntrees(titre, nbEntrees, elements);
+            ChangementNbEntrees(titre, nbEntrees, elements);
         }
         else{
             elements[nbFilms]=new Film(titre, realisateur, annee, nbEntrees);
