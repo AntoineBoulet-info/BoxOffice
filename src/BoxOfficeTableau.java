@@ -20,9 +20,12 @@ public class BoxOfficeTableau extends BoxOffice {
         }
         return false;
     }
-    public void ChangementNbEntrees(String titre,int nbEntrees,Film[] tab) {
+    public void SommeNbEntrees(String titre, int nbEntrees, Film[] tab) {
         for (Film f : tab) {
             if (f==null) break;
+            if(f.getTitre().equals(titre)) {
+                nbEntrees += f.getNbEntrees();
+            }
         }
     }
 
@@ -33,7 +36,7 @@ public class BoxOfficeTableau extends BoxOffice {
             elements=duplication(elements);
         }
         if(search(titre,annee, elements)){
-            ChangementNbEntrees(titre, nbEntrees, elements);
+            SommeNbEntrees(titre, nbEntrees, elements);
         }
         else{
             elements[nbFilms]=new Film(titre, realisateur, annee, nbEntrees);
@@ -43,8 +46,10 @@ public class BoxOfficeTableau extends BoxOffice {
     }
 
     public void maxEntrees(){
+       Film[] tab = new Film[2];
+       for (int i=0;i<3;i++){
 
-
+       }
     }
 
 
@@ -65,9 +70,9 @@ public class BoxOfficeTableau extends BoxOffice {
     public static void main(String[] args) throws IOException {
         if (args.length<1) System.err.println("nom de fichier manquant");
         else {
-            BoxOfficeTableau tab =  new BoxOfficeTableau(args[0]);
+            BoxOfficeTableau tmp =  new BoxOfficeTableau(args[0]);
             System.out.println("Fichier : "+args[0]);
-            tab.affichage();
+            tmp.affichage();
         }
 
 
