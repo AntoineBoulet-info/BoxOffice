@@ -46,12 +46,12 @@ public class BoxOfficeTableau extends BoxOffice {
         nbLignes++;
     }
 
-    public Film[] maxEntrees(){
+    public Film[] maxEntrees(Film[] film){
        Film[] tab = new Film[3];
        int i = 0;
-       if (elements == null) elements = new Film[TAILLE_INITIALE];
-        for(Film e : elements ){
+        for(Film e : film ){
             tab[i] = e;
+            //System.out.println(e.getTitre());
             i++;
             if(i>=3)
                 break;
@@ -67,7 +67,8 @@ public class BoxOfficeTableau extends BoxOffice {
         System.out.println("Nombre de films : " + nbFilms);
         System.out.println("------------");
         System.out.println("Films  comptabilisant le plus grand nombre d'entrees : ");
-        System.out.println(Arrays.toString(maxEntrees()));
+        System.out.println(Arrays.toString(maxEntrees(elements)));
+
     }
 
 
