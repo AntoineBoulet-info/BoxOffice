@@ -128,9 +128,9 @@ public class BoxOfficeTableau extends BoxOffice {
     public static void main(String[] args) throws Exception {
         if (args.length<1) System.err.println("nom de fichier manquant");
         else {
-            BoxOfficeTableau tmp =  new BoxOfficeTableau(args[0]);
+            BoxOfficeTableau bot =  new BoxOfficeTableau(args[0]);
             System.out.println("Fichier : "+args[0]);
-            tmp.affichage();
+            bot.affichage();
         }
 
 

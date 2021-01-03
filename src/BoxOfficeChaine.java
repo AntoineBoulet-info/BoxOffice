@@ -7,7 +7,6 @@ public class BoxOfficeChaine extends BoxOffice {
     }
 
     public void addFilm(String titre, String realisateur, int annee, int nbEntrees) {
-        //System.out.println(titre);
         if (first == null) {
             first = new FilmChaine(titre, realisateur, annee, nbEntrees);
             nbFilms++; // ne pas oublier d'incrémenter le premier film qui est ajouté !
@@ -20,13 +19,12 @@ public class BoxOfficeChaine extends BoxOffice {
                 if(element.getTitre().equals(titre) && element.getAnnee()==annee && element.getRealisateur().equals(realisateur) ){
                     trouve=true;
                     element.addEntrees(nbEntrees);
-                    if(element.getPrec()!=null){
-
-                        if(element.getPrec().getNbEntrees()<element.getNbEntrees()){
+                    if(element.getPrec()!=null && element.getNext()!=null){
+                        if(element.getPrec().getNbEntrees() < element.getNbEntrees()){
                             element.getPrec().setNext(element.getNext());
                             element.getNext().setPrec(element.getPrec());
                             element.setPrec(element.getPrec().getPrec());
-                            boolean Pos=false;
+                            boolean pos=false;
                             while (element.getPrec()!=null){
                                 if(element.getPrec().getNbEntrees()<element.getNbEntrees()){
                                     element.setPrec(element.getPrec().getPrec());
@@ -35,12 +33,12 @@ public class BoxOfficeChaine extends BoxOffice {
                                     element.setNext(element.getPrec().getNext());
                                     element.getPrec().getNext().setPrec(element);
                                     element.getPrec().setNext(element);
-                                    Pos=true;
+                                    pos=true;
                                     break;
                                 }
 
                             }
-                            if(!Pos){
+                            if(!pos){
                                 element.setNext(first);
                                 first.setPrec(element);
                                 first=element;
@@ -54,7 +52,7 @@ public class BoxOfficeChaine extends BoxOffice {
             }
             if(!trouve){
                 element=first;
-                boolean Pos=false;
+                boolean pos=false;
                 while (element.getNext()!=null){
                     if(element.getNbEntrees()>nbEntrees){
                         element=element.getNext();
@@ -72,13 +70,13 @@ public class BoxOfficeChaine extends BoxOffice {
                             first.getPrec().setNext(first);
                             first=first.getPrec();
                         }
-                        Pos=true;
+                        pos=true;
                         nbFilms++;
                         break;
                     }
 
                 }
-                if(!Pos) {
+                if(!pos) {
                     element.setNext(new FilmChaine(titre, realisateur, annee, nbEntrees));
                     element.getNext().setPrec(element);
                     nbFilms++;
@@ -106,9 +104,9 @@ public class BoxOfficeChaine extends BoxOffice {
     public static void main(String[] args) throws Exception{
         if (args.length<1) System.err.println("nom de fichier manquant");
         else {
-            System.out.println("Fichier :"+args[0]);
-            BoxOfficeChaine boxOfficeChaine = new BoxOfficeChaine(args[0]);
-            boxOfficeChaine.affichage();
+            System.out.println("Fichier : "+args[0]);
+            BoxOfficeChaine boc = new BoxOfficeChaine(args[0]);
+            boc.affichage();
 
 
         }
