@@ -46,6 +46,16 @@ public class Film {
     public void setNbEntrees(int nbEntrees) {
         this.nbEntrees = nbEntrees;
     }
+    void addEntrees(int nbEntrees){
+        this.nbEntrees+=nbEntrees;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret+=("("+annee+")"+ " " +  titre + "\t" + " entrees : " +  nbEntrees);
+        return ret;
+    }
 
     
 }

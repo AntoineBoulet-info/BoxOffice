@@ -8,6 +8,7 @@ import java.util.*;
 //abstract class
 public abstract class BoxOffice {
         private String listing;
+        protected static int nbLignes=0,nbFilms=0;
         public abstract void addFilm(String titre,String realisateur,int annee, int nbEntrees);
         public BoxOffice(String listing) {
             ArrayList<String> data = new ArrayList<>();
@@ -34,6 +35,7 @@ public abstract class BoxOffice {
 
                         //ajoute les données dans addFilm qui sera appelé dans le Test
                         addFilm(titre, realisateur, annee, nbEntrees);
+                        nbLignes++;
                     }
                 }
 
