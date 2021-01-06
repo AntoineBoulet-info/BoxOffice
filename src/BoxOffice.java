@@ -11,7 +11,7 @@ public abstract class BoxOffice {
         protected static int nbLignes=0,nbFilms=0;
         public abstract void addFilm(String titre,String realisateur,int annee, int nbEntrees);
         public BoxOffice(String listing) {
-            ArrayList<String> data = new ArrayList<>();
+            //ArrayList<String> data = new ArrayList<>();
             try{
                 Scanner in = new Scanner(new File(listing));
                 String line;
